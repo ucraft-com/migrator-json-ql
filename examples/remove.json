@@ -1,0 +1,9 @@
+{
+  "op": "REMOVE",
+  "data": [
+    {
+      "where": "params.settings.name",
+      "what": null
+    }
+  ]
+}

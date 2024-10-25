@@ -1,0 +1,12 @@
+{
+  "op": "ADD",
+  "data": [
+    {
+      "where": "params.settings",
+      "what": {
+        "key": "name",
+        "value": "contentType"
+      }
+    }
+  ]
+}

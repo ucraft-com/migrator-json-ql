@@ -1,0 +1,49 @@
+{
+  "findBy": {
+    "AND": [
+      {
+        "key": "type",
+        "value": "button",
+        "operator": "EQ"
+      },
+      {
+        "OR": [
+          {
+            "key": "type",
+            "value": "button",
+            "operator": "EQ"
+          },
+          {
+            "key": "type",
+            "value": "button",
+            "operator": "EQ"
+          }
+        ]
+      }
+    ]
+  },
+  "operations": [
+    {
+      "op": "add",
+      "data": [
+        {
+          "where": "params.settings",
+          "what": {
+            "key": "name",
+            "value": "contentType"
+          }
+        }
+      ]
+    },
+    {
+      "op": "remove",
+      "data": [
+        {
+          "where": "params.settings.name",
+          "what": null
+        }
+      ]
+    }
+  ]
+}
+

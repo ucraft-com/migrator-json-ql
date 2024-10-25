@@ -1,0 +1,21 @@
+# Logs
+logs
+*.log
+
+# dotenv environment variables file
+.env
+.env.test
+
+# Dependencies
+
+node_modules/
+vendor/
+
+# Misc
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+.code/
+.phpunit.result.cache

@@ -1,0 +1,19 @@
+{
+  "op": "REPLACE",
+  "data": [
+    {
+      "where": "params.settings.name",
+      "what": "contentType"
+    },
+    {
+      "where": "params.variantsStyles",
+      "what": [
+        {
+          "breakpointId": "3",
+          "cssState": "normal",
+          "styles": []
+        }
+      ]
+    }
+  ]
+}
