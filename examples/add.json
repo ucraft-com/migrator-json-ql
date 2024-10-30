@@ -4,8 +4,7 @@
     {
       "where": "params.settings",
       "what": {
-        "key": "name",
-        "value": "contentType"
+        "name": "contentType"
       }
     }
   ]

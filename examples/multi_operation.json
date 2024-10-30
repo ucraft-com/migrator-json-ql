@@ -24,19 +24,18 @@
   },
   "operations": [
     {
-      "op": "add",
+      "op": "ADD",
       "data": [
         {
           "where": "params.settings",
           "what": {
-            "key": "name",
-            "value": "contentType"
+            "name": "contentType"
           }
         }
       ]
     },
     {
-      "op": "remove",
+      "op": "REMOVE",
       "data": [
         {
           "where": "params.settings.name",
