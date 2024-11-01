@@ -57,6 +57,30 @@ class AddOperationStrategyTest extends TestCase
         $this->assertEquals('myValue', $data['params']['newSettings']);
     }
 
+    public function testAddOperation_WhenGivenArrayData_ReturnsAddedData(): void
+    {
+        $data = $this->applyOperation('params.settings',
+            [
+                [
+                    'value' => ['id' => 1, 'type' => 'internal']
+                ]
+            ],
+            [
+            'type'   => 'button',
+            'params' => [
+                'variantType' => 'FORM_GIFT_CARD_DETAILS',
+                'settings' => [
+                    [
+                        'value' => ['id' => 1, 'type' => 'internal']
+                    ]
+                ],
+                'variantsStyles' => []
+            ]
+        ]);
+
+        $this->assertEquals(1, $data['params']['settings'][1]['value']['id']);
+    }
+
     protected function applyOperation(string $path, mixed $value, array $data = null): array
     {
         $data ??= [

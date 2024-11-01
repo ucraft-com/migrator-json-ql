@@ -21,8 +21,14 @@ class AddOperation implements OperationStrategyInterface
 
         if (Arr::isArray($arrData) && !empty($arrData)) {
             if (Arr::isArray($value)) {
-                foreach ($value as $key => $item) {
-                    $arrData[$key] = $item;
+                if (Arr::isList($value)) {
+                    foreach ($value as $item) {
+                        $arrData[] = $item;
+                    }
+                } else {
+                    foreach ($value as $key => $item) {
+                        $arrData[$key] = $item;
+                    }
                 }
             } else {
                 // Add new key-value pair to the array

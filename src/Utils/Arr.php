@@ -15,6 +15,7 @@ use function str_contains;
 use function array_key_exists;
 use function is_null;
 use function is_float;
+use function array_is_list;
 
 class Arr
 {
@@ -26,6 +27,16 @@ class Arr
     public static function isArray(mixed $data): bool
     {
         return is_array($data);
+    }
+
+    /**
+     * @param array $data
+     *
+     * @return bool
+     */
+    public static function isList(array $data): bool
+    {
+        return array_is_list($data);
     }
 
     // Get a reference to the value at a given path

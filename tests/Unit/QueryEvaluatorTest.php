@@ -98,6 +98,26 @@ class QueryEvaluatorTest extends TestCase
         $this->assertFalse($result);
     }
 
+    public function testEvaluate_WhenGivenWrongOperatorInDetails_ReturnsFalse(): void
+    {
+        $query = [
+            "findBy" => [
+                "AND" => [
+                    [
+                        "key"      => "type",
+                        "value"    => "input",
+                        "operator" => "ABC"
+                    ],
+                ]
+            ]
+        ];
+
+        $queryEvaluator = $this->getInstance();
+        $result = $queryEvaluator->evaluate($this->getData(), $query['findBy']);
+
+        $this->assertFalse($result);
+    }
+
     /**
      * @return array
      */
