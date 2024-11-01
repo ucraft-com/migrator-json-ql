@@ -13,7 +13,7 @@ class ReplaceOperationStrategyTest extends TestCase
     {
         $data = $this->applyOperation('params.settings.name', 'newName');
 
-        $this->assertEquals($data['params']['settings']['name'], 'newName');
+        $this->assertEquals('newName', $data['params']['settings']['name']);
     }
 
     public function testReplaceOperation_WhenGivenKeyThatIsArray_ReturnsRemovedData(): void
@@ -21,7 +21,7 @@ class ReplaceOperationStrategyTest extends TestCase
         $data = $this->applyOperation('params.settings', ['newSettings' => 'newValue']);
 
         $this->assertArrayHasKey('newSettings', $data['params']['settings']);
-        $this->assertEquals($data['params']['settings']['newSettings'], 'newValue');
+        $this->assertEquals('newValue', $data['params']['settings']['newSettings']);
     }
 
     protected function applyOperation(string $path, mixed $value): array

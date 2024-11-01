@@ -35,8 +35,8 @@ class OperationContextTest extends TestCase
 
         $data = $this->applyOperation($operation);
 
-        $this->assertEquals($data['params']['settings']['name'], 'newContentType');
-        $this->assertEquals($data['params']['variantsStyles'][0]['breakpointId'], '3');
+        $this->assertEquals('newContentType', $data['params']['settings']['name']);
+        $this->assertEquals('3', $data['params']['variantsStyles'][0]['breakpointId']);
     }
 
     public function testApplyRemoveOperation_WhenGivenValidData_ReturnsMutatedData(): void
@@ -70,9 +70,9 @@ class OperationContextTest extends TestCase
 
         $data = $this->applyOperation($operation);
 
-        $this->assertEquals($data['params']['settings']['name'], 'contentType');
-        $this->assertEquals($data['params']['settings']['aa'], 'newContent');
-        $this->assertEquals($data['params']['settings']['bb'], 'bb');
+        $this->assertEquals('contentType', $data['params']['settings']['name']);
+        $this->assertEquals('newContent', $data['params']['settings']['aa']);
+        $this->assertEquals('bb', $data['params']['settings']['bb']);
     }
 
     public function testApplyMultipleOperations_WhenGivenValidData_ReturnsMutatedData(): void
@@ -114,7 +114,7 @@ class OperationContextTest extends TestCase
         }
 
         $this->assertArrayNotHasKey('aa', $data['params']['settings']);
-        $this->assertEquals($data['params']['settings']['bb'], 'bb');
+        $this->assertEquals('bb', $data['params']['settings']['bb']);
     }
 
     public function testApplyNotValidOperation_ReturnsException(): void

@@ -70,8 +70,8 @@ class QLParserTest extends TestCase
 
         $qlParser->applyOperations($result, $operations);
 
-        $this->assertEquals($result['params']['settings']['name'], 'newContentType');
-        $this->assertEquals($result['params']['variantsStyles'][0]['breakpointId'], '3');
+        $this->assertEquals('newContentType', $result['params']['settings']['name']);
+        $this->assertEquals('3', $result['params']['variantsStyles'][0]['breakpointId']);
     }
 
     public function testParseData_WhenGivenNotValidFindBy_ReturnsNull(): void

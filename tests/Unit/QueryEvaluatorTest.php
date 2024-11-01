@@ -10,7 +10,7 @@ use QLParser\QueryEvaluator\QueryEvaluator;
 
 class QueryEvaluatorTest extends TestCase
 {
-    public function testEvaluate_WhenGivenANDCondition_ReturnsTrue(): void
+    public function testEvaluate_WhenGivenCorrectCondition_ReturnsTrue(): void
     {
         $query = [
             "findBy" => [
@@ -23,13 +23,13 @@ class QueryEvaluatorTest extends TestCase
                     [
                         "OR" => [
                             [
-                                "key"      => "type",
-                                "value"    => "button",
+                                "key"      => "params.variantType",
+                                "value"    => "FORM_GIFT_CARD_DETAILS",
                                 "operator" => "EQ"
                             ],
                             [
-                                "key"      => "type",
-                                "value"    => "button",
+                                "key"      => "settings.other",
+                                "value"    => "something",
                                 "operator" => "EQ"
                             ]
                         ]
@@ -37,6 +37,65 @@ class QueryEvaluatorTest extends TestCase
                 ]
             ]
         ];
+
+        $queryEvaluator = $this->getInstance();
+        $result = $queryEvaluator->evaluate($this->getData(), $query['findBy']);
+
+        $this->assertTrue($result);
+    }
+
+    public function testEvaluate_WhenGivenNotCorrectCondition_ReturnsFalse(): void
+    {
+        $query = [
+            "findBy" => [
+                "AND" => [
+                    [
+                        "key"      => "type",
+                        "value"    => "input",
+                        "operator" => "EQ"
+                    ],
+                    [
+                        "OR" => [
+                            [
+                                "key"      => "params.variantType",
+                                "value"    => "FORM_GIFT_CARD_DETAILS",
+                                "operator" => "EQ"
+                            ],
+                            [
+                                "key"      => "settings.other",
+                                "value"    => "something",
+                                "operator" => "EQ"
+                            ]
+                        ]
+                    ],
+                ]
+            ]
+        ];
+
+        $queryEvaluator = $this->getInstance();
+        $result = $queryEvaluator->evaluate($this->getData(), $query['findBy']);
+
+        $this->assertFalse($result);
+    }
+
+    public function testEvaluate_WhenGivenWrongOperator_ReturnsFalse(): void
+    {
+        $query = [
+            "findBy" => [
+                "and" => [
+                    [
+                        "key"      => "type",
+                        "value"    => "input",
+                        "operator" => "EQ"
+                    ],
+                ]
+            ]
+        ];
+
+        $queryEvaluator = $this->getInstance();
+        $result = $queryEvaluator->evaluate($this->getData(), $query['findBy']);
+
+        $this->assertFalse($result);
     }
 
     /**
