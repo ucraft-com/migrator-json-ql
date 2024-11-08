@@ -19,7 +19,7 @@ class ConditionEvaluator implements ConditionEvaluatorInterface
     {
         // Extract condition details
         $key = $condition['key'];
-        $value = $condition['value'];
+        $value = $condition['value'] ?? null;
         $operator = $condition['operator'];
 
         // Get the actual value from the data using the Arr helper

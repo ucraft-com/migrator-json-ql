@@ -100,6 +100,62 @@ class ConditionEvaluatorTest extends TestCase
         $this->assertFalse($result);
     }
 
+    public function testEvaluate_WhenGivenEMPTYOperatorAndValidValue_ReturnsTrue(): void
+    {
+        $data = $this->getData();
+
+        $conditions = [
+            'key'      => 'params.variantsStyles',
+            'operator' => ConditionalOperatorEnum::EMPTY->value,
+        ];
+
+        $result = $this->createInstance()->evaluate($data, $conditions);
+
+        $this->assertTrue($result);
+    }
+
+    public function testEvaluate_WhenGivenEMPTYOperatorAndNotValidValue_ReturnsFalse(): void
+    {
+        $data = $this->getData();
+
+        $conditions = [
+            'key'      => 'params.settings.name',
+            'operator' => ConditionalOperatorEnum::EMPTY->value,
+        ];
+
+        $result = $this->createInstance()->evaluate($data, $conditions);
+
+        $this->assertFalse($result);
+    }
+
+    public function testEvaluate_WhenGivenNEMPTYOperatorAndValidValue_ReturnsTrue(): void
+    {
+        $data = $this->getData();
+
+        $conditions = [
+            'key'      => 'params.settings.name',
+            'operator' => ConditionalOperatorEnum::NEMPTY->value,
+        ];
+
+        $result = $this->createInstance()->evaluate($data, $conditions);
+
+        $this->assertTrue($result);
+    }
+
+    public function testEvaluate_WhenGivenNEMPTYOperatorAndNotValidValue_ReturnsFalse(): void
+    {
+        $data = $this->getData();
+
+        $conditions = [
+            'key'      => 'params.variantsStyles',
+            'operator' => ConditionalOperatorEnum::NEMPTY->value,
+        ];
+
+        $result = $this->createInstance()->evaluate($data, $conditions);
+
+        $this->assertFalse($result);
+    }
+
     /**
      * @return array
      */
